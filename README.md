@@ -19,3 +19,12 @@ docker-compose up
 
 An application is planned to be shipped with this repo to have a straightforward
 way to do a pmkid hashcat attack for wpa2 password cracking.
+
+The attack planned to be implemented will more or less follow [this tutorial](https://null-byte.wonderhowto.com/how-to/hack-wi-fi-cracking-wpa2-passwords-using-new-pmkid-hashcat-attack-0189379/).
+
+There will be the steps:
+- choose a wlan interface to be used
+- choose a wlan access point to crack
+
+With the info above it should then be possible to run the attack and print the
+matching password in the end (if found in a given password list).
