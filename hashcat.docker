@@ -1,0 +1,21 @@
+FROM nvidia/opencl:runtime-ubuntu18.04
+
+# Update & install packages for installing hashcat
+RUN apt-get update && \
+    apt-get install -y make build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev hashcat iproute2
+
+RUN mkdir /hashcat
+
+WORKDIR /hashcat
+RUN git clone https://github.com/ZerBea/hcxdumptool.git && \
+    cd hcxdumptool && \
+    make && \
+    make install
+
+WORKDIR /hashcat
+RUN git clone https://github.com/ZerBea/hcxtools.git && \
+    cd hcxtools && \
+    make && \
+    make install
+
+CMD ip addr show
