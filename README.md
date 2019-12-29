@@ -17,6 +17,13 @@ docker-compose up
 
 ## Usage
 
+It is planned to add an application to this container. Until then the container
+starts doing `tail -f /dev/null` as its last command and therefor keeps running.
+It is therefore possible to run commands in this container and profit from its
+installed dependencies like: `docker exec -ti hashcat_environment <command>`.
+
+## Future plan
+
 An application is planned to be shipped with this repo to have a straightforward
 way to do a pmkid hashcat attack for wpa2 password cracking.
 
