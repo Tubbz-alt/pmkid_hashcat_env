@@ -6,4 +6,5 @@ services:
         build:
             context: ./
             dockerfile: hashcat.docker
-        command: tail -f /dev/null
+        entrypoint: /bin/bash
+        tty: true
