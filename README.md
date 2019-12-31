@@ -2,6 +2,8 @@
 
 A container environment holding the dependencies for a pmkid wpa2 password cracking attack.
 
+The attack planned to be implemented will more or less follow [this tutorial](https://null-byte.wonderhowto.com/how-to/hack-wi-fi-cracking-wpa2-passwords-using-new-pmkid-hashcat-attack-0189379/).
+
 ## Dependencies
 
 - It is necessary to have `docker` and `docker-compose` installed.
@@ -12,26 +14,27 @@ A container environment holding the dependencies for a pmkid wpa2 password crack
 ```
 git clone git@github.com:busykoala/pmkid_hashcat_env.git
 cd pmkid_hashcat_env
-docker-compose up
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python ./runme.py
 ```
 
-## Usage
+## Test
 
-It is planned to add an application to this container. Until then the container
-starts doing `tail -f /dev/null` as its last command and therefor keeps running.
-It is therefore possible to run commands in this container and profit from its
-installed dependencies like: `docker exec -ti hashcat_environment <command>`.
+Because there is no real production mode planned in the near future the test
+dependencies are also in `requirements.txt` and therefore installed when setup.
 
-## Future plan
+```
+source venv/bin/activate
+pytest
+```
 
-An application is planned to be shipped with this repo to have a straightforward
-way to do a pmkid hashcat attack for wpa2 password cracking.
+## Future Plans
 
-The attack planned to be implemented will more or less follow [this tutorial](https://null-byte.wonderhowto.com/how-to/hack-wi-fi-cracking-wpa2-passwords-using-new-pmkid-hashcat-attack-0189379/).
+Since the python script `runme.py` is not yet doing anything there is still work to do.
 
-There will be the steps:
+It is planned to crack wlan passwords with these user interaction steps:
 - choose a wlan interface to be used
 - choose a wlan access point to crack
-
-With the info above it should then be possible to run the attack and print the
-matching password in the end (if found in a given password list).
+- choose a password list to use
