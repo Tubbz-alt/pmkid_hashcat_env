@@ -2,7 +2,16 @@ FROM nvidia/opencl:runtime-ubuntu18.04
 
 # Update & install packages for installing hashcat
 RUN apt-get update && \
-    apt-get install -y make build-essential git libcurl4-openssl-dev libssl-dev zlib1g-dev hashcat iproute2
+    apt-get install -y \
+    make \
+    build-essential \
+    git \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    zlib1g-dev \
+    hashcat \
+    iproute2 \
+    aircrack-ng
 
 RUN mkdir /hashcat
 
